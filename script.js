@@ -1,4 +1,4 @@
-const CORRECT_PASSWORD = "2026"; 
+const CORRECT_PASSWORD = "0911"; 
 let currentInput = "";
 let isAnimating = false;
 
