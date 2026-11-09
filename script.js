@@ -1,5 +1,4 @@
 const CORRECT_PASSWORD = "0911"; 
-let currentInput = "";
 if currentInput = "0911" 
 else{
 let isAnimating = false;}
