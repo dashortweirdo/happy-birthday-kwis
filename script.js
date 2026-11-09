@@ -14,7 +14,7 @@ function pressKey(num) {
             setTimeout(() => {
                 if (currentInput === CORRECT_PASSWORD) {
                     // Triggers multi-page cross-document navigation layout
-                    window.location.href = "landing.html";
+                    window.location.href = "tit.html";
                 } else {
                     triggerWrongAnimation();
                 }
