@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Memories</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <a href="photos.html"><button>View the photos</button></a>
+    <style>
+        .window {
+            font-family: cursive;
+  width: 400px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+.window-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: #333;
+  color: #fff;
+  cursor: move;
+}
+.window-content 
+{font-family: cursive;
+     padding: 12px; }
+    </style>
+</head>
+<body>
+    <div class="screen active">
+        <div class="album-grid">
+            <div class="window-frame">
+                <div class="window-header-bar"><div class="win-dot"></div><div class="win-dot"></div></div>
+                <div class="photo-slot" style="background-image: url('media/media2.jpeg');"></div>
+                <div class="frame-caption">Happy Birthday Kwis!</div>
+            </div>
+            <div class="window-frame">
+                <div class="window-header-bar"><div class="win-dot"></div><div class="win-dot"></div></div>
+                <div class="photo-slot" style="background-image: url('media/media3.jpeg');"></div>
+                <div class="frame-caption">I love you ✨</div>
+            </div>
+
+               <div class="window-frame">
+                <div class="window-header-bar"><div class="win-dot"></div><div class="win-dot"></div></div>
+                <div class="photo-slot" style="background-image: url('media/media38.jpeg');"></div>
+                <div class="frame-caption">✨👀 </div>
+            </div>
+        </div>
+        <div class="nav-arrow" onclick="window.location.href='gifts.html'">
+            <div class="pixel-arrow-icon" style="transform: rotate(180deg);"></div>
+        </div>
+    </div>
+</body>
+</html>
