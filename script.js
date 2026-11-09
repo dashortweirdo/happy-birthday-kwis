@@ -1,6 +1,8 @@
 const CORRECT_PASSWORD = "0911"; 
 let currentInput = "";
-let isAnimating = false;
+if currentInput = "0911" 
+else{
+let isAnimating = false;}
 
 function pressKey(num) {
     if (isAnimating) return;
