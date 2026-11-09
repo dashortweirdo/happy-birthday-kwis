@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Message For You</title>
+    <!-- Pixel art styled font -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific scene adjustments to perfectly mirror your reference image layout */
+        .intro-scene-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        /* Left Side Character Standing Structure */
+        .character-stand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+            animation: floatCharacter 4s ease-in-out infinite;
+        }
+
+        .avatar-img-main {
+            width: 210px;
+            height: auto;
+            image-rendering: pixelated; /* Keeps your pixel graphics sharp */
+        }
+
+        /* Floating Cloud Pod underneath her feet */
+        .cloud-pod-base {
+            width: 250px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 40px;
+            margin-top: -12px;
+            filter: blur(2px);
+            box-shadow: 0 12px 24px rgba(234, 151, 185, 0.25);
+        }
+
+        /* Right Side: Replicating your image's exact rounded text bubble block */
+        .image-speech-bubble {
+            position: relative;
+            background-color: #ffffff;
+            border: 6px solid #ffbad2; /* Thick pink pastel outline border */
+            border-radius: 24px;       /* Smooth rounded look matching your image */
+            padding: 35px 50px;
+            max-width: 580px;
+            width: 100%;
+            box-shadow: 0 8px 0px rgba(0,0,0,0.03);
+            animation: floatBubble 4s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        /* Speech bubble pointer stem angled underneath pointing left towards character */
+        .image-speech-bubble::after, .image-speech-bubble::before {
+            top: 100%;
+            left: 25%; /* Left-aligned stem arrow orientation */
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .image-speech-bubble::after {
+            border-color: rgba(255, 255, 255, 0);
+            border-top-color: #ffffff;
+            border-width: 16px;
+            margin-left: -16px;
+        }
+        .image-speech-bubble::before {
+            border-color: rgba(255, 186, 210, 0);
+            border-top-color: #ffbad2;
+            border-width: 24px;
+            margin-left: -24px;
+        }
+
+        /* Centered message text styling matching image color tone */
+        .birthday-dialogue-text {
+            color: #d67093; /* Rich retro rose color matching your text font */
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Custom individual float rates to mimic a dreamy space look */
+        @keyframes floatCharacter {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes floatBubble {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Smooth mobile responsive scaling templates */
+        @media (max-width: 768px) {
+            .intro-scene-wrapper {
+                flex-direction: column;
+                justify-content: center;
+                gap: 50px;
+                padding: 0 20px;
+            }
+            .image-speech-bubble {
+                padding: 25px;
+            }
+            .image-speech-bubble::after, .image-speech-bubble::before {
+                top: auto;
+                bottom: 100%;
+                left: 50%;
+            }
+            .image-speech-bubble::after { border-top-color: transparent; border-bottom-color: #ffffff; }
+            .image-speech-bubble::before { border-top-color: transparent; border-bottom-color: #ffbad2; }
+            .birthday-dialogue-text { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="screen active">
+        <div class="intro-scene-wrapper">
+            
+            <!-- Left Side Element: Character block container -->
+            <div class="character-stand">
+                <!-- Using the direct image graphic file variable layout source -->
+                <img class="avatar-img-main" src="./media/PixelBirthday Girl Avatr.jpeg" alt="Pixel Birthday Girl Avatar">
+                <div class="cloud-pod-base"></div>
+            </div>
+
+            <!-- Right Side Element: Centered Text Frame Wrapper Box -->
+            <div class="image-speech-bubble">
+                <p class="birthday-dialogue-text">I'm so happy to celebrate today with you<br> Happy birthday!!!!</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

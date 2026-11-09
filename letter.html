@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter For You</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .letter-bg-panel { 
+            background-color: #f2e2ca; 
+            border: 6px dashed #7a5843; 
+            border-radius: 4px; 
+            padding: 40px; 
+            max-width: 650px; 
+            width: 90%; 
+            max-height: 80vh; 
+            overflow-y: auto; 
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
+        }
+
+        .letter-content-text { 
+            font-size: 13px; 
+            color: #402f25; 
+            line-height: 2; 
+            text-align: left; 
+            white-space: pre-wrap; /* Keeps line breaks cleanly formatted */
+        }
+
+        /* The Custom Pixel-Art Flashing Cursor Block */
+        .pixel-cursor {
+            display: inline-block;
+            width: 12px;
+            height: 18px;
+            background-color: #402f25;
+            vertical-align: middle;
+            margin-left: 4px;
+            animation: cursorBlink 0.8s steps(2, start) infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .letter-bg-panel { padding: 20px; }
+            .letter-content-text { font-size: 11px; }
+            .pixel-cursor { width: 10px; height: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="screen active">
+        <div class="letter-bg-panel">
+            <!-- This container will dynamically hold the typed text and cursor element -->
+            <p class="letter-content-text" id="typewriter-text"></p>
+        </div>
+        <div class="nav-arrow" onclick="window.location.href='gifts.html'">
+            <div class="pixel-arrow-icon" style="transform: rotate(180deg);"></div>
+        </div>
+    </div>
+
+    <script>
+        // Place your complete raw text string message layout template inside this constant variable block
+        const rawMessageText = `Happy Birthday to the most amazing boyfriend in the world! 
+
+You make every day brighter with your smile, every moment sweeter with your love, and my life so much happier just by being in it. 
+
+I feel so lucky to have you by my side, and I can't wait for all the adventures, laughter, and memories we will continue to share. Enjoy your special day to the absolute fullest! ❤️`;
+
+        let charIndex = 0;
+        const textTarget = document.getElementById('typewriter-text');
+        
+        // Typing speed speed settings adjustments variables (expressed in milliseconds per character)
+        const typingSpeedMs = 45; 
+
+        function runTypewriter() {
+            if (charIndex < rawMessageText.length) {
+                // Strip existing manual cursor out to avoid parsing collision injection
+                const standardCursor = document.querySelector('.pixel-cursor');
+                if (standardCursor) standardCursor.remove();
+
+                // Append the incoming string characters array sequentially
+                textTarget.textContent += rawMessageText.charAt(charIndex);
+                charIndex++;
+
+                // Build fresh indicator tag elements nodes down the block array line structure
+                const cursorBlock = document.createElement('span');
+                cursorBlock.className = 'pixel-cursor';
+                textTarget.appendChild(cursorBlock);
+
+                // Autoscroll panel container layout downwards continuously while lines unpack dynamically
+                const panelContainer = document.querySelector('.letter-bg-panel');
+                panelContainer.scrollTop = panelContainer.scrollHeight;
+
+                setTimeout(runTypewriter, typingSpeedMs);
+            }
+        }
+
+        // Initialize script functions once window elements have cleared resource tracking engines safely
+        window.addEventListener('DOMContentLoaded', runTypewriter);
+    </script>
+</body>
+</html>
+

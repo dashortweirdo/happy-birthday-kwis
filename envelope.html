@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Have Mail!</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .envelope-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .envelope-hint {
+            color: #fff;
+            text-shadow: 2px 2px 0px #cf6d8b;
+            font-size: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+            line-height: 1.8;
+            animation: textPulse 2s ease-in-out infinite;
+        }
+
+        /* Outer dimensions of our custom pixel envelope */
+        .pixel-envelope {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            background-color: #f7e1b5;
+            border: 6px solid #222;
+            box-shadow: 0 12px 0px rgba(0,0,0,0.1);
+        }
+
+        /* Diagonal geometric lines inside envelope pouch background layout */
+        .pixel-envelope::before {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; right: 0; top: 0;
+            background: 
+                linear-gradient(33deg, #ebd19b 49%, transparent 50%),
+                linear-gradient(-33deg, #ebd19b 49%, transparent 50%);
+            background-size: 100% 100%;
+            z-index: 1;
+        }
+
+        /* Top folding triangular flap layout */
+        .envelope-flap {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 280px;
+            height: 95px;
+            background-color: #fce7ad;
+            border: 6px solid #222;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+            z-index: 3;
+            transform-origin: top center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Dynamic open state trigger styling */
+        .pixel-envelope.open .envelope-flap {
+            transform: rotateX(180deg) translateY(6px);
+            z-index: 0;
+            background-color: #ebd19b;
+        }
+
+        /* Heart Wax Seal stamp element badge */
+        .heart-seal {
+            position: absolute;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #e23b5d;
+            border: 4px solid #222;
+            border-radius: 50%;
+            z-index: 4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 0 #9e2a3b;
+            transition: transform 0.2s, opacity 0.3s;
+            animation: heartFloat 2s ease-in-out infinite;
+        }
+
+        .pixel-heart-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            clip-path: path('M10 3.7c-1.7-4.5-10-3.8-10 2.9 0 3.4 2.5 7.9 10 12.5 7.5-4.6 10-9.1 10-12.5 0-6.7-8.3-7.4-10-2.9z');
+            transform: scale(0.9);
+        }
+
+        .pixel-envelope.open .heart-seal {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+        }
+
+        @keyframes heartFloat {
+            0%, 100% { transform: translate(-50%, 0px); }
+            50% { transform: translate(-50%, -8px); }
+        }
+
+        @keyframes textPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="screen active">
+        <div class="envelope-container" onclick="handleEnvelopeClick()">
+            <div class="envelope-hint">You received a letter!<br>Click the heart seal to open</div>
+            
+            <div class="pixel-envelope" id="envelope-box">
+                <div class="envelope-flap"></div>
+                <div class="heart-seal">
+                    <div class="pixel-heart-icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleEnvelopeClick() {
+            const envelope = document.getElementById('envelope-box');
+            
+            // Activate opening rotation animations
+            envelope.classList.add('open');
+
+            // Allow 600ms for folding transitions to complete before navigating away
+            setTimeout(() => {
+                window.location.href = "letter.html";
+            }, 600);
+        }
+    </script>
+</body>
+</html>
